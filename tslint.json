@@ -1,0 +1,6 @@
+{
+  "extends": "tslint-config-uxpin",
+  "rules": {
+    "no-console": false
+  }
+}

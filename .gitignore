@@ -1,0 +1,12 @@
+/dist
+node_modules/
+.idea/
+coverage/
+
+src/**/*.js
+src/**/*.js.map
+test/**/*.js
+test/**/*.js.map
+!/test/e2e/__fixtures__/**/*.js
+src/types.d.ts
+yarn-error.log

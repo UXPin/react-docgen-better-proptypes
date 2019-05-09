@@ -8,4 +8,4 @@ function ImportedAllPropsStatelessComponent() {
 ImportedAllPropsStatelessComponent.propTypes = BasicStatelessComponent.propTypes;
 ImportedAllPropsStatelessComponent.defaultProps = BasicStatelessComponent.defaultProps;
 
-export default ImportedAllPropsClassComponent;
+export default ImportedAllPropsStatelessComponent;

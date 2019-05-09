@@ -3,14 +3,14 @@ import { getComponentPath } from '../../utils/getComponentPath';
 import { parseComponent } from '../../utils/parseComponent';
 import { basicPropsResult } from '../__fixtures__/props/basicPropsResult';
 
-describe('serialize basic components', () => {
-  describe('with propTypes defined within the file', () => {
-    it('should serialize simplest class component', async () => {
+describe('serialize components with local spreads', () => {
+  describe('with propTypes defined in the same file', () => {
+    it('and spread into a class component', async () => {
       // given
-      const componentPath:string = getComponentPath('BasicClassComponent');
+      const componentPath:string = getComponentPath('LocalPropsSpreadClassComponent');
       const expectedComponent:ComponentDoc = {
         description: '',
-        displayName: 'BasicClassComponent',
+        displayName: 'LocalPropsSpreadClassComponent',
         methods: [],
         props: basicPropsResult,
       };
@@ -22,12 +22,12 @@ describe('serialize basic components', () => {
       expect(result).toEqual(expectedComponent);
     });
 
-    it('should serialize simplest stateless component', async () => {
+    it('and spread into a stateless component', async () => {
       // given
-      const componentPath:string = getComponentPath('BasicStatelessComponent');
+      const componentPath:string = getComponentPath('LocalPropsSpreadStatelessComponent');
       const expectedComponent:ComponentDoc = {
         description: '',
-        displayName: 'BasicStatelessComponent',
+        displayName: 'LocalPropsSpreadStatelessComponent',
         methods: [],
         props: basicPropsResult,
       };
@@ -40,16 +40,13 @@ describe('serialize basic components', () => {
     });
   });
 
-  describe('with all proptypes object imported from external file', () => {
-    it('should serialize class component', async () => {
+  describe('with propTypes with imported spreads defined in the same file', () => {
+    it('and spread into a class component', async () => {
       // given
-      const componentPath:string = getComponentPath('ImportedAllPropsClassComponent');
-      const expectedComponent: ComponentDoc = {
-        composes: [
-          './BasicClassComponent',
-        ],
+      const componentPath:string = getComponentPath('LocalPropsSpreadImportedPropsClassComponent');
+      const expectedComponent:ComponentDoc = {
         description: '',
-        displayName: 'ImportedAllPropsClassComponent',
+        displayName: 'LocalPropsSpreadImportedPropsClassComponent',
         methods: [],
         props: basicPropsResult,
       };
@@ -61,15 +58,12 @@ describe('serialize basic components', () => {
       expect(result).toEqual(expectedComponent);
     });
 
-    it('should serialize stateless component', async () => {
+    it('and spread into a stateless component', async () => {
       // given
-      const componentPath:string = getComponentPath('ImportedAllPropsStatelessComponent');
+      const componentPath:string = getComponentPath('LocalPropsSpreadImportedPropsStatelessComponent');
       const expectedComponent:ComponentDoc = {
-        composes: [
-          './BasicStatelessComponent',
-        ],
         description: '',
-        displayName: 'ImportedAllPropsStatelessComponent',
+        displayName: 'LocalPropsSpreadImportedPropsStatelessComponent',
         methods: [],
         props: basicPropsResult,
       };

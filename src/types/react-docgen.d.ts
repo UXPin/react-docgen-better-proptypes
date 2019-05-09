@@ -71,6 +71,7 @@ declare module 'react-docgen' {
   }
 
   export interface PropItemType {
+    computed?:boolean;
     name:string;
     value?:any;
   }

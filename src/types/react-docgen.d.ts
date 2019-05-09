@@ -30,6 +30,54 @@ declare module 'react-docgen' {
   };
 
   export declare const utils: ReactDocgenUtils;
+
+  interface StringIndexedObject<T> {
+    [key:string]:T;
+  }
+
+  export interface ComponentDoc {
+    displayName:string;
+    description:string;
+    props:Props;
+    methods:Method[];
+  }
+
+  export interface Props extends StringIndexedObject<PropItem> {
+  }
+
+  export interface PropItem {
+    name?:string;
+    required:boolean;
+    type:PropItemType;
+    description:string;
+    defaultValue?:any;
+    parent?:ParentType;
+  }
+
+  export interface Method {
+    name:string;
+    docblock:string;
+    modifiers:string[];
+    params:Array<{
+      name:string;
+      description?:string | null;
+    }>;
+    returns?:{
+      description?:string | null;
+      type?:string;
+    } | null;
+    description:string;
+  }
+
+  export interface PropItemType {
+    name:string;
+    value?:any;
+  }
+
+  export interface ParentType {
+    name:string;
+    fileName:string;
+  }
 }
 
 declare module 'react-docgen/dist/utils/setPropDescription' {

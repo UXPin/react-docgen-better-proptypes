@@ -1,4 +1,4 @@
-import { ComponentDoc } from 'react-docgen-typescript';
+import { ComponentDoc } from 'react-docgen';
 import { getComponentPath } from '../../utils/getComponentPath';
 import { parseComponent } from '../../utils/parseComponent';
 
@@ -12,9 +12,7 @@ describe('serialize basic class component', () => {
       methods: [],
       props: {
         color: {
-          defaultValue: '',
           description: 'This is color prop description',
-          name: 'color',
           required: true,
           type: {
             name: 'string',
@@ -26,7 +24,6 @@ describe('serialize basic class component', () => {
             value: "'Submit'",
           },
           description: '',
-          name: 'text',
           required: false,
           type: {
             name: 'string',

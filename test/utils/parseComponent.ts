@@ -1,5 +1,5 @@
 import { defaultHandlers, Handler, parse } from 'react-docgen';
-import { ComponentDoc } from 'react-docgen-typescript';
+import { ComponentDoc } from 'react-docgen';
 
 import { importedPropTypesHandler } from '../../src';
 import { getSource } from './getSource';

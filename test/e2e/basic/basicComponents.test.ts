@@ -1,27 +1,7 @@
 import { ComponentDoc, Props } from 'react-docgen';
 import { getComponentPath } from '../../utils/getComponentPath';
 import { parseComponent } from '../../utils/parseComponent';
-
-const BASIC_PROPS:Props = {
-  color: {
-    description: 'This is color prop description',
-    required: true,
-    type: {
-      name: 'string',
-    },
-  },
-  text: {
-    defaultValue: {
-      computed: false,
-      value: "'Submit'",
-    },
-    description: '',
-    required: false,
-    type: {
-      name: 'string',
-    },
-  },
-};
+import { basicPropsResult } from '../__fixtures__/props/basicPropsResult';
 
 describe('serialize basic components', () => {
   describe('with propTypes defined within the file', () => {
@@ -32,7 +12,7 @@ describe('serialize basic components', () => {
         description: '',
         displayName: 'BasicClassComponent',
         methods: [],
-        props: BASIC_PROPS,
+        props: basicPropsResult,
       };
 
       // when
@@ -49,7 +29,7 @@ describe('serialize basic components', () => {
         description: '',
         displayName: 'BasicStatelessComponent',
         methods: [],
-        props: BASIC_PROPS,
+        props: basicPropsResult,
       };
 
       // when
@@ -61,7 +41,7 @@ describe('serialize basic components', () => {
   });
 
   describe('with all proptypes object imported from external file', () => {
-    it('should serialize simplest class component', async () => {
+    it('should serialize class component', async () => {
       // given
       const componentPath:string = getComponentPath('ImportedAllPropsClassComponent');
       const expectedComponent: ComponentDoc = {
@@ -71,7 +51,7 @@ describe('serialize basic components', () => {
         description: '',
         displayName: 'ImportedAllPropsClassComponent',
         methods: [],
-        props: BASIC_PROPS,
+        props: basicPropsResult,
       };
 
       // when
@@ -81,7 +61,7 @@ describe('serialize basic components', () => {
       expect(result).toEqual(expectedComponent);
     });
 
-    it('should serialize simplest stateless component', async () => {
+    it('should serialize stateless component', async () => {
       // given
       const componentPath:string = getComponentPath('ImportedAllPropsStatelessComponent');
       const expectedComponent:ComponentDoc = {
@@ -91,7 +71,7 @@ describe('serialize basic components', () => {
         description: '',
         displayName: 'ImportedAllPropsStatelessComponent',
         methods: [],
-        props: BASIC_PROPS,
+        props: basicPropsResult,
       };
 
       // when

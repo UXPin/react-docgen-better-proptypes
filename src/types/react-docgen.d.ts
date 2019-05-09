@@ -36,6 +36,7 @@ declare module 'react-docgen' {
   }
 
   export interface ComponentDoc {
+    composes?:string[];
     displayName:string;
     description:string;
     props:Props;

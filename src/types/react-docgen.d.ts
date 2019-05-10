@@ -9,6 +9,14 @@ declare module 'react-docgen' {
     parserOptions?: ParserOptions;
   }
 
+  export interface Documentation {
+    getChildContextDescriptor:DocumentationDescriptor;
+    getContextDescriptor:DocumentationDescriptor;
+    getPropDescriptor:DocumentationDescriptor;
+  };
+
+  export type DocumentationDescriptor = any;
+
   export declare type Handler = (doc: any, path: string) => void;
   export declare type Resolver = (ast: any, recast: object) => NodePath;
 

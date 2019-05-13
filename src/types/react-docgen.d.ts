@@ -32,9 +32,14 @@ declare module 'react-docgen' {
   export declare const resolver: any;
 
   interface ReactDocgenUtils {
-    getMemberValuePath: (componentDefinition: NodePath, memberName: string) => NodePath | undefined,
-    getPropertyName: (path: NodePath) => string;
-    setPropDescription: () => void;
+    getNameOrValue:(path:NodePath) => string;
+    getMemberExpressionRoot:(path:NodePath) => NodePath | undefined,
+    getMemberValuePath:(componentDefinition:NodePath, memberName:string) => NodePath | undefined,
+    getPropertyName:(path:NodePath) => string;
+    getPropType:(path:NodePath) => string;
+    isReactModuleName:(name:string) => boolean;
+    resolveToModule:(path:NodePath) => string | undefined;
+    setPropDescription:() => void;
   };
 
   export declare const utils: ReactDocgenUtils;
@@ -92,4 +97,8 @@ declare module 'react-docgen' {
 
 declare module 'react-docgen/dist/utils/setPropDescription' {
   export default function():void;
+}
+
+declare module 'react-docgen/dist/utils/getMemberExpressionValuePath' {
+  export default function(path:NodePath, name:string):NodePath | undefined;
 }

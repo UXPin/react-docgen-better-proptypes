@@ -2,6 +2,7 @@ export enum NodePathType {
   ASSIGNMENT_EXPRESSION = 'AssignmentExpression',
   CALL_EXPRESSION = 'CallExpression',
   IDENTIFIER = 'Identifier',
+  IMPORT_DECLARATION = 'ImportDeclaration',
   MEMBER_EXPERSSION = 'MemberExpression',
   OBJECT_EXPRESSION = 'ObjectExpression',
   PROPERTY = 'Property',

@@ -36,11 +36,17 @@ declare module 'react-docgen' {
     getMemberExpressionRoot:(path:NodePath) => NodePath | undefined,
     getMemberValuePath:(componentDefinition:NodePath, memberName:string) => NodePath | undefined,
     getPropertyName:(path:NodePath) => string;
-    getPropType:(path:NodePath) => string;
+    getPropType:(path:NodePath) => PropTypeValue;
     isReactModuleName:(name:string) => boolean;
     resolveToModule:(path:NodePath) => string | undefined;
     setPropDescription:() => void;
   };
+
+  export interface PropTypeValue {
+    computed?:boolean;
+    name:string;
+    value:any;
+  }
 
   export declare const utils: ReactDocgenUtils;
 

@@ -1,5 +1,5 @@
 import { ASTNode, NodePath } from 'ast-types';
-import { utils } from 'react-docgen';
+import { utils, PropTypeValue } from 'react-docgen';
 
 import { HandlerContext } from '../handlers/getHandlerContext';
 import { NodePathType } from './Nodes/NodePathTypes';
@@ -20,10 +20,15 @@ export enum NodeOperator {
 }
 
 export interface Node extends ASTNode {
+  body?:Node[],
+  imported?:Node,
   init?:any;
   name:string;
   object:Node;
   operator?:NodeOperator;
+  source?:Node;
+  specifiers?:Node[];
+  value:any;
 }
 
 export type Parser = (path:NodePath<Node>, context:HandlerContext) => void;
@@ -92,7 +97,7 @@ function propertyParser(path:NodePath<Node>, context:HandlerContext):void {
 
   parsePath(value, context);
 
-  const type:string = utils.getPropType(value);
+  const type:PropTypeValue = utils.getPropType(value);
 
   console.log(type);
 }

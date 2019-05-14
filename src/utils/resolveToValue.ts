@@ -4,6 +4,7 @@ import { HandlerContext } from '../handlers/getHandlerContext';
 import { NodePathType } from './Nodes/NodePathTypes';
 import { isPropTypesExpression } from './isPropTypesExpression';
 import { Node, NodeOperator } from './parsePath';
+import { resolvePropTypesExpression } from './resolvePropTypesExpression';
 
 export function resolveToValue(path:NodePath<Node>, context:HandlerContext):NodePath<Node> {
   const { node } = path;
@@ -29,7 +30,7 @@ export function resolveToValue(path:NodePath<Node>, context:HandlerContext):Node
 
     case NodePathType.MEMBER_EXPERSSION: {
       if (isPropTypesExpression(path)) {
-        return path;
+        return resolvePropTypesExpression(path, context);
       }
 
       const root:NodePath<Node> | undefined = utils.getMemberExpressionRoot(path);

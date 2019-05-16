@@ -3,7 +3,7 @@ import { getComponentPath } from '../../utils/getComponentPath';
 import { parseComponent } from '../../utils/parseComponent';
 import { basicPropsResult } from '../__fixtures__/props/basicPropsResult';
 
-describe('serialize components with local spreads', () => {
+describe.skip('serialize components with local spreads', () => {
   describe('with propTypes defined in the same file', () => {
     it('and spread into a class component', async () => {
       // given

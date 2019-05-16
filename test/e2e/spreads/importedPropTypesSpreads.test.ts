@@ -18,7 +18,7 @@ const localPropResult:Props = {
   },
 };
 
-describe('serialize components with local spreads', () => {
+describe.skip('serialize components with local spreads', () => {
   describe('with propTypes imported from external file', () => {
     it('and spread directly into a class component', async () => {
       // given

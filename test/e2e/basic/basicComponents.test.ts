@@ -3,7 +3,7 @@ import { getComponentPath } from '../../utils/getComponentPath';
 import { parseComponent } from '../../utils/parseComponent';
 import { basicPropsResult } from '../__fixtures__/props/basicPropsResult';
 
-describe('serialize basic components', () => {
+describe.skip('serialize basic components', () => {
   describe('with propTypes defined within the file', () => {
     it('should serialize simplest class component', async () => {
       // given

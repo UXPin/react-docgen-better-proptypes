@@ -21,6 +21,7 @@ export enum NodeOperator {
 
 export interface Node extends ASTNode {
   body?:Node[],
+  id?:Node,
   imported?:Node,
   init?:any;
   name:string;

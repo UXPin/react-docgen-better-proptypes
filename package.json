@@ -1,20 +1,20 @@
 {
-  "name": "react-docgen-imported-proptype-handler",
+  "name": "react-docgen-better-proptypes",
   "version": "1.0.4",
-  "description": "evaluate imported variables for react-docgen",
+  "description": "Better support for prop types in react-docgen",
   "scripts": {},
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benjroy/react-docgen-imported-proptype-handler.git"
+    "url": "git+https://github.com/devfive/react-docgen-better-proptypes.git"
   },
   "keywords": [],
-  "author": "benjroy",
+  "author": "devfive",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/benjroy/react-docgen-imported-proptype-handler/issues"
+    "url": "https://github.com/devfive/react-docgen-better-proptypes/issues"
   },
-  "homepage": "https://github.com/benjroy/react-docgen-imported-proptype-handler#readme",
+  "homepage": "https://github.com/devfive/react-docgen-better-proptypes#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
@@ -40,8 +40,6 @@
     "react-docgen": "^4.1.0",
     "react-docgen-typescript": "^1.12.3",
     "react-router": "^4.3.1",
-    "recast": "^0.17.3",
-    "rimraf": "^2.6.2",
     "ts-jest": "^24.0.0",
     "tslint": "^5.11.0",
     "tslint-config-uxpin": "^1.7.0"
@@ -71,7 +69,6 @@
     "typescript": "^3.1.3"
   },
   "peerDependencies": {
-    "react-docgen": "^4.1.0",
-    "recast": "^0.17.3"
+    "react-docgen": "^4.1.0"
   }
 }

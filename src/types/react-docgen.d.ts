@@ -4,9 +4,9 @@ import { ParserOptions } from '@babel/parser';
 
 declare module 'react-docgen' {
   export interface ReactDocgenOptions {
-    cwd?: string;
-    filename?: string;
-    parserOptions?: ParserOptions;
+    cwd?:string;
+    filename?:string;
+    parserOptions?:ParserOptions;
   }
 
   export interface Documentation {
@@ -17,19 +17,19 @@ declare module 'react-docgen' {
 
   export type DocumentationDescriptor = (name:string) => PropItem;
 
-  export declare type Handler = (doc: any, path: string) => void;
-  export declare type Resolver = (ast: any, recast: object) => NodePath;
+  export declare type Handler = (doc:any, path:string) => void;
+  export declare type Resolver = (ast:any, recast:object) => NodePath;
 
-  export declare const defaultHandlers: Handler[];
+  export declare const defaultHandlers:Handler[];
 
   export declare function parse(
-    source: string,
-    resolver?: () => void | undefined,
-    handlers?: Handler[] | undefined,
-    options?: ReactDocgenOptions | undefined,
-  ): ComponentDoc;
+    source:string,
+    resolver?:Resolver | undefined,
+    handlers?:Handler[] | undefined,
+    options?:ReactDocgenOptions | undefined,
+  ):ComponentDoc;
 
-  export declare const resolver: any;
+  export declare const resolver:any;
 
   interface ReactDocgenUtils {
     getNameOrValue:(path:NodePath) => string;
@@ -55,7 +55,7 @@ declare module 'react-docgen' {
     value:any;
   }
 
-  export declare const utils: ReactDocgenUtils;
+  export declare const utils:ReactDocgenUtils;
 
   interface StringIndexedObject<T> {
     [key:string]:T;

@@ -1,13 +1,14 @@
-import { NodePath, ASTNode, visit } from 'ast-types';
-import { VariableDeclaration, Declaration } from 'ast-types/gen/nodes';
-import { utils, PropTypeValue, MemberDescriptor } from 'react-docgen';
+import { ASTNode, NodePath, visit } from 'ast-types';
+import { Declaration } from 'ast-types/gen/nodes';
+import { MemberDescriptor, PropTypeValue, utils } from 'react-docgen';
 import { HandlerContext } from '../handlers/getHandlerContext';
 import { getSourceSync } from './fs/getSourceSync';
 import { findImportDeclaration } from './Nodes/imports/findImportDeclaration';
 import { getImportDeclarationFilePath } from './Nodes/imports/getImportDeclarationFilePath';
 import { Node } from './parsePath';
 
-const buildParse = require('react-docgen/dist/babelParser').default;
+// tslint:disable-next-line:no-var-requires
+const babelParser:() => { parse:(soruce:string) => ASTNode } = require('react-docgen/dist/babelParser').default;
 
 export function resolvePropTypesExpression(path:NodePath<Node>, context:HandlerContext):NodePath<Node> {
   const propValue:PropTypeValue = utils.getPropType(path);
@@ -21,7 +22,7 @@ export function resolvePropTypesExpression(path:NodePath<Node>, context:HandlerC
 
 function resolveEnumPropTypeValue(propType:PropTypeValue, path:NodePath<Node>, context:HandlerContext):NodePath<Node> {
   const bindings:BindingsMap = path.scope.getBindings();
-  const valueBindings:NodePath<Node>[] | undefined = bindings[propType.value];
+  const valueBindings:Array<NodePath<Node>> | undefined = bindings[propType.value];
   const valueBinding:NodePath<Node> | undefined = valueBindings ? valueBindings[0] : undefined;
 
   if (!valueBindings || !valueBinding) {
@@ -34,23 +35,21 @@ function resolveEnumPropTypeValue(propType:PropTypeValue, path:NodePath<Node>, c
   }
 
   const filePath:string | undefined = getImportDeclarationFilePath(importDeclaration, context);
-  console.log(filePath);
   if (!filePath) {
     return path;
   }
 
-  const result:any = buildParse().parse((getSourceSync(filePath)));
-  console.log(result);
-
+  const result:ASTNode = babelParser().parse(getSourceSync(filePath));
   const declaration:NodePath<Declaration> | undefined = findVariableDeclaration(result, valueBinding);
   if (!declaration) {
     return path;
   }
 
   const members:MemberDescriptor[] = utils.getMembers(path);
-  const oneOfMember:MemberDescriptor | undefined = members.find(({ path }:MemberDescriptor):boolean => {
-    return path.node.name === 'oneOf';
+  const oneOfMember:MemberDescriptor | undefined = members.find(({ path: memberPath }:MemberDescriptor):boolean => {
+    return memberPath.node.name === 'oneOf';
   });
+
   if (!oneOfMember || !oneOfMember.argumentsPath) {
     return path;
   }
@@ -66,7 +65,7 @@ function findVariableDeclaration(path:ASTNode, binding:NodePath<Node>):NodePath<
   let resultPath:NodePath<Declaration> | undefined;
 
   visit(path, {
-    visitVariableDeclaration: function (variablePath:NodePath<Declaration>):void | boolean {
+    visitVariableDeclaration(variablePath:NodePath<Declaration>):void | boolean {
       // Return false to stop traversing
       if (resultPath) {
         return false;
@@ -81,6 +80,7 @@ function findVariableDeclaration(path:ASTNode, binding:NodePath<Node>):NodePath<
         resultPath = variablePath;
       }
 
+      // tslint:disable-next-line:no-invalid-this
       this.traverse(variablePath);
 
       return;
@@ -91,5 +91,5 @@ function findVariableDeclaration(path:ASTNode, binding:NodePath<Node>):NodePath<
 }
 
 interface BindingsMap {
-  [key:string]:NodePath<Node>[];
+  [key:string]:Array<NodePath<Node>>;
 }

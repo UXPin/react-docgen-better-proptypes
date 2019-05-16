@@ -1,8 +1,8 @@
 import { NodePath } from 'ast-types';
 import { utils } from 'react-docgen';
 import { HandlerContext } from '../handlers/getHandlerContext';
-import { NodePathType } from './Nodes/NodePathTypes';
 import { isPropTypesExpression } from './isPropTypesExpression';
+import { NodePathType } from './Nodes/NodePathTypes';
 import { Node, NodeOperator } from './parsePath';
 import { resolvePropTypesExpression } from './resolvePropTypesExpression';
 
@@ -19,12 +19,10 @@ export function resolveToValue(path:NodePath<Node>, context:HandlerContext):Node
     }
 
     case NodePathType.CALL_EXPRESSION: {
-      console.log('resolveToValue', NodePathType.CALL_EXPRESSION);
       break;
     }
 
     case NodePathType.IDENTIFIER: {
-      console.log('resolveToValue', NodePathType.IDENTIFIER);
       break;
     }
 
@@ -43,7 +41,6 @@ export function resolveToValue(path:NodePath<Node>, context:HandlerContext):Node
         break;
       }
 
-      // TODO:
       return resolved;
     }
 

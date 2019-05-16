@@ -1,6 +1,6 @@
 import { NodePath } from 'ast-types';
-import { NodePathType } from '../NodePathTypes';
 import { Node } from '../../parsePath';
+import { NodePathType } from '../NodePathTypes';
 
 export function getImports(path:NodePath<Node>):Node[] {
   const valuePath:NodePath<Node> = path.get('value');

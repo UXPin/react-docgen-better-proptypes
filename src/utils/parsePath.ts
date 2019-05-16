@@ -1,14 +1,11 @@
 import { ASTNode, NodePath } from 'ast-types';
-import { utils, PropTypeValue, PropItem } from 'react-docgen';
-
+import { PropItem, PropTypeValue, utils } from 'react-docgen';
 import { HandlerContext } from '../handlers/getHandlerContext';
-import { NodePathType } from './Nodes/NodePathTypes';
-import { resolveToValue } from './resolveToValue';
-import { isPropTypesExpression } from './isPropTypesExpression';
 import { getManyProps } from './getManyProps';
 import { isPathNodeType } from './isPathNodeType';
-
-const setPropDescription = require('react-docgen/dist/utils/setPropDescription').default;
+import { isPropTypesExpression } from './isPropTypesExpression';
+import { NodePathType } from './Nodes/NodePathTypes';
+import { resolveToValue } from './resolveToValue';
 
 interface PropParseResult {
   [key:string]:any;
@@ -19,9 +16,9 @@ export enum NodeOperator {
 }
 
 export interface Node extends ASTNode {
-  body?:Node[],
-  id?:Node,
-  imported?:Node,
+  body?:Node[];
+  id?:Node;
+  imported?:Node;
   init?:any;
   name:string;
   object:Node;
@@ -45,8 +42,7 @@ function getParser(type:NodePathType):Parser {
       return propertyParser;
 
     default:
-      console.log(`Unsupported ${type}`);
-      return () => {};
+      return () => undefined;
   }
 }
 
@@ -70,7 +66,8 @@ function memberExpressionParser(path:NodePath<Node>, context:HandlerContext):voi
       return;
     }
 
-    const memberValuePath:NodePath<Node> | undefined = utils.getMemberValuePath(resolved, utils.getNameOrValue(path.get('property')));
+    const name:string = utils.getNameOrValue(path.get('property'));
+    const memberValuePath:NodePath<Node> | undefined = utils.getMemberValuePath(resolved, name);
     if (!memberValuePath) {
       return;
     }

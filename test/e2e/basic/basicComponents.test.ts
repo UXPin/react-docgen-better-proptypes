@@ -44,7 +44,7 @@ describe('serialize basic components', () => {
     it('should serialize class component', async () => {
       // given
       const componentPath:string = getComponentPath('ImportedAllPropsClassComponent');
-      const expectedComponent: ComponentDoc = {
+      const expectedComponent:ComponentDoc = {
         composes: [
           './BasicClassComponent',
         ],

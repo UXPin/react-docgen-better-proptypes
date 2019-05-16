@@ -1,4 +1,4 @@
-import { NodePath } from 'ast-types';
+import { NodePath, ASTNode } from 'ast-types';
 import { ComponentDoc } from 'react-docgen-typescript/lib';
 import { ParserOptions } from '@babel/parser';
 

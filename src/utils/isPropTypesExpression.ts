@@ -1,5 +1,5 @@
-import { utils } from 'react-docgen';
 import { NodePath } from 'ast-types';
+import { utils } from 'react-docgen';
 import { Node } from './parsePath';
 
 const REACT_PROP_TYPES:string = 'ReactPropTypes';

@@ -13,7 +13,7 @@ describe('serialize components with imported one of', () => {
         displayName: 'ImportedOneOfValueClassComponent',
         methods: [],
         props: {
-          ...themePropsResult
+          ...themePropsResult,
         },
       };
 
@@ -25,7 +25,7 @@ describe('serialize components with imported one of', () => {
     });
 
     it('within stateless component', async () => {
-
+      // TODO
     });
   });
 });

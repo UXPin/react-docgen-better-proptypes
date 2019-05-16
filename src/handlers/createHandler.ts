@@ -1,9 +1,8 @@
 import { NodePath } from 'ast-types';
 import { Documentation } from 'react-docgen';
-
 import { parsePath } from '../utils/parsePath';
-import { HandlerContext, getHandlerContext } from './getHandlerContext';
 import { AllowedHandlerProps } from './getHandledPropertyPath';
+import { getHandlerContext, HandlerContext } from './getHandlerContext';
 
 export type Handler = (filePath:string) => (...args:any[]) => void;
 
@@ -17,7 +16,7 @@ export function createHandler(propName:AllowedHandlerProps):Handler {
         filePath,
       );
 
-      console.log(parsePath(context.propertyPath, context));
+      parsePath(context.propertyPath, context);
     };
   };
 }

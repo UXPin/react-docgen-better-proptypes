@@ -6,12 +6,11 @@ import { Node } from '../../parsePath';
 export const ALLOWED_EXTENSIONS:string[] = ['js', 'jsx'];
 
 export function getImportDeclarationFilePath(importDeclaration:Node, context:HandlerContext):string | undefined {
-  const filePath: string = resolve(dirname(context.filePath), importDeclaration.source!!.value);
-  const extension: string | undefined = ALLOWED_EXTENSIONS.find((extension: string) => {
+  const filePath:string = resolve(dirname(context.filePath), importDeclaration.source!!.value);
+  const extension:string | undefined = ALLOWED_EXTENSIONS.find((ext:string) => {
     try {
-      return existsSync(`${filePath}.${extension}`);
-    }
-    catch (e) {
+      return existsSync(`${filePath}.${ext}`);
+    } catch (e) {
       return false;
     }
   });

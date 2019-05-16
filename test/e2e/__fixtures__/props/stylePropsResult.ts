@@ -1,6 +1,6 @@
 import { Props } from 'react-docgen';
-import { sizePropsResult } from './sizePropsResult';
 import { colorPropsResult } from './colorPropsResult';
+import { sizePropsResult } from './sizePropsResult';
 
 export const stylePropsResult:Props = {
   ...colorPropsResult,

@@ -7,8 +7,8 @@ export const themePropsResult:Props = {
     type: {
       name: 'enum',
       value: [
-        { computed: false, value: '\'dark\'' },
-        { computed: false, value: '\'light\'' },
+        { computed: false, value: '"dark"' },
+        { computed: false, value: '"light"' },
       ],
     },
   },

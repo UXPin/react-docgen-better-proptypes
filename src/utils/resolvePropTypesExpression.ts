@@ -48,7 +48,15 @@ function resolveEnumPropTypeValue(propType:PropTypeValue, path:NodePath<Node>, c
   }
 
   const members:MemberDescriptor[] = utils.getMembers(path);
-  console.log(members);
+  const oneOfMember:MemberDescriptor | undefined = members.find(({ path }:MemberDescriptor):boolean => {
+    return path.node.name === 'oneOf';
+  });
+  if (!oneOfMember || !oneOfMember.argumentsPath) {
+    return path;
+  }
+
+  // Replace NodePath with variable identifier to actual value of the variable
+  oneOfMember.argumentsPath.get(0).replace(declaration.get('declarations').get(0).node);
 
   return path;
 }

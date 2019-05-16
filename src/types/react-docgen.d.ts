@@ -15,7 +15,7 @@ declare module 'react-docgen' {
     getPropDescriptor:DocumentationDescriptor;
   };
 
-  export type DocumentationDescriptor = any;
+  export type DocumentationDescriptor = (name:string) => PropItem;
 
   export declare type Handler = (doc: any, path: string) => void;
   export declare type Resolver = (ast: any, recast: object) => NodePath;

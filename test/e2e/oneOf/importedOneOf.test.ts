@@ -9,9 +9,6 @@ describe('serialize components with imported one of', () => {
       // given
       const componentPath:string = getComponentPath('ImportedOneOfValueClassComponent');
       const expectedComponent:ComponentDoc = {
-        composes: [
-          '../props/basicProps',
-        ],
         description: '',
         displayName: 'ImportedOneOfValueClassComponent',
         methods: [],

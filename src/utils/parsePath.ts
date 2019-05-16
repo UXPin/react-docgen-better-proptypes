@@ -1,5 +1,5 @@
 import { ASTNode, NodePath } from 'ast-types';
-import { utils, PropTypeValue } from 'react-docgen';
+import { utils, PropTypeValue, PropItem } from 'react-docgen';
 
 import { HandlerContext } from '../handlers/getHandlerContext';
 import { NodePathType } from './Nodes/NodePathTypes';
@@ -8,8 +8,7 @@ import { isPropTypesExpression } from './isPropTypesExpression';
 import { getManyProps } from './getManyProps';
 import { isPathNodeType } from './isPathNodeType';
 
-const getMemberExpressionRoot = require('react-docgen/dist/utils/getMemberExpressionRoot').default;
-const getMemberExpressionValuePath = require('react-docgen/dist/utils/getMemberExpressionValuePath').default;
+const setPropDescription = require('react-docgen/dist/utils/setPropDescription').default;
 
 interface PropParseResult {
   [key:string]:any;
@@ -99,8 +98,13 @@ function propertyParser(path:NodePath<Node>, context:HandlerContext):void {
   parsePath(value, context);
 
   const type:PropTypeValue = utils.getPropType(value);
+  if (!type) {
+    return;
+  }
 
-  console.log(type);
+  // Yeah, we mutate current property description to update the value
+  const propDescription:PropItem = context.docsDescriptor(name);
+  propDescription.type = type;
 }
 
 export function parsePath(path:NodePath<Node>, context:HandlerContext):PropParseResult {

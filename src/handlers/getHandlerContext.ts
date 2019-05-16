@@ -1,6 +1,6 @@
 import { NodePath } from 'ast-types';
 import { resolve } from 'path';
-import { Documentation, DocumentationDescriptor } from 'react-docgen';
+import { Documentation, PropItem, DocumentationDescriptor } from 'react-docgen';
 import { AllowedHandlerProps, getHandledPropertyPath } from './getHandledPropertyPath';
 import { getDocsDescriptor } from './getDocsDescriptor';
 

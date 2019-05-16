@@ -33,6 +33,7 @@ declare module 'react-docgen' {
 
   interface ReactDocgenUtils {
     getNameOrValue:(path:NodePath) => string;
+    getMembers:(path:NodePath, includeRoot:boolean = false) => MemberDescriptor[],
     getMemberExpressionRoot:(path:NodePath) => NodePath | undefined,
     getMemberValuePath:(componentDefinition:NodePath, memberName:string) => NodePath | undefined,
     getPropertyName:(path:NodePath) => string;
@@ -41,6 +42,12 @@ declare module 'react-docgen' {
     resolveToModule:(path:NodePath) => string | undefined;
     setPropDescription:() => void;
   };
+
+  export interface MemberDescriptor {
+    argumentsPath?:NodePath;
+    computed:boolean;
+    path:NodePath;
+  }
 
   export interface PropTypeValue {
     computed?:boolean;

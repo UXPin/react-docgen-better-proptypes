@@ -26,7 +26,7 @@
     "@types/glob": "^7.1.1",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.11.3",
-    "ast-types": "^0.12.2",
+    "ast-types": "^0.12.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",

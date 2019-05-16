@@ -25,7 +25,22 @@ describe('serialize components with imported one of', () => {
     });
 
     it('within stateless component', async () => {
-      // TODO
+      // given
+      const componentPath:string = getComponentPath('ImportedOneOfValueStatelessComponent');
+      const expectedComponent:ComponentDoc = {
+        description: '',
+        displayName: 'ImportedOneOfValueStatelessComponent',
+        methods: [],
+        props: {
+          ...themePropsResult,
+        },
+      };
+
+      // when
+      const result:ComponentDoc = await parseComponent(componentPath);
+
+      // then
+      expect(result).toEqual(expectedComponent);
     });
   });
 });

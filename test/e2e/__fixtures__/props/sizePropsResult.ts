@@ -5,7 +5,12 @@ export const sizePropsResult:Props = {
     description: '',
     required: true,
     type: {
-      name: 'oneOf',
+      name: 'enum',
+      value: [
+        { computed: false, value: '"sm"' },
+        { computed: false, value: '"md"' },
+        { computed: false, value: '"xl"' },
+      ],
     },
   },
 };

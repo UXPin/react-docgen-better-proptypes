@@ -39,7 +39,9 @@ declare module 'react-docgen' {
     getPropertyName:(path:NodePath) => string;
     getPropType:(path:NodePath) => PropTypeValue;
     isReactModuleName:(name:string) => boolean;
+    resolveExportDeclaration:(path:NodePath) => NodePath[];
     resolveToModule:(path:NodePath) => string | undefined;
+    resolveToValue:(path:NodePath) => NodePath;
     setPropDescription:() => void;
   };
 

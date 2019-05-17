@@ -1,10 +1,12 @@
 import { ASTNode, NodePath, visit } from 'ast-types';
-import { Declaration } from 'ast-types/gen/nodes';
+import { Declaration, ExportDefaultDeclaration } from 'ast-types/gen/nodes';
 import { MemberDescriptor, PropTypeValue, utils } from 'react-docgen';
 import { HandlerContext } from '../handlers/getHandlerContext';
 import { getSourceSync } from './fs/getSourceSync';
 import { findImportDeclaration } from './Nodes/imports/findImportDeclaration';
 import { getImportDeclarationFilePath } from './Nodes/imports/getImportDeclarationFilePath';
+import { getImportSpecifier } from './Nodes/imports/getImportSpecifier';
+import { NodePathType } from './Nodes/NodePathTypes';
 import { Node } from './parsePath';
 
 // tslint:disable-next-line:no-var-requires
@@ -40,7 +42,12 @@ function resolveEnumPropTypeValue(propType:PropTypeValue, path:NodePath<Node>, c
   }
 
   const result:ASTNode = babelParser().parse(getSourceSync(filePath));
-  const declaration:NodePath<Declaration> | undefined = findVariableDeclaration(result, valueBinding);
+  const declaration:NodePath<Declaration> | undefined = findExternalVariableDeclaration(
+    result,
+    importDeclaration,
+    valueBinding,
+  );
+
   if (!declaration) {
     return path;
   }
@@ -60,14 +67,38 @@ function resolveEnumPropTypeValue(propType:PropTypeValue, path:NodePath<Node>, c
   return path;
 }
 
-function findVariableDeclaration(path:ASTNode, binding:NodePath<Node>):NodePath<Declaration> | undefined {
+function findExternalVariableDeclaration(
+  path:ASTNode,
+  importDeclaration:Node,
+  binding:NodePath<Node>,
+):NodePath<Declaration> | undefined {
   const variableName:string = utils.getNameOrValue(binding);
+  const specifier:Node | undefined = getImportSpecifier(importDeclaration, variableName);
+  if (!specifier) {
+    return;
+  }
+
+  const isDefaultImport:boolean = specifier.type === NodePathType.IMPORT_DEFAULT_SPECIFIER;
   let resultPath:NodePath<Declaration> | undefined;
 
   visit(path, {
+    visitExportDefaultDeclaration(exportPath:NodePath<ExportDefaultDeclaration>):void | boolean {
+      if (resultPath || !isDefaultImport) {
+        return false;
+      }
+
+      const resolved:NodePath[] = utils.resolveExportDeclaration(exportPath);
+
+      if (resolved[0]) {
+        resultPath = resolved[0];
+      }
+
+      // tslint:disable-next-line:no-invalid-this
+      this.traverse(exportPath);
+    },
     visitVariableDeclaration(variablePath:NodePath<Declaration>):void | boolean {
       // Return false to stop traversing
-      if (resultPath) {
+      if (resultPath || isDefaultImport) {
         return false;
       }
 

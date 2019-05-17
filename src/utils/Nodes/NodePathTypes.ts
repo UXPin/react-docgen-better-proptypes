@@ -3,6 +3,8 @@ export enum NodePathType {
   CALL_EXPRESSION = 'CallExpression',
   IDENTIFIER = 'Identifier',
   IMPORT_DECLARATION = 'ImportDeclaration',
+  IMPORT_DEFAULT_SPECIFIER = 'ImportDefaultSpecifier',
+  IMPORT_SPECIFIER = 'ImportSpecifier',
   MEMBER_EXPERSSION = 'MemberExpression',
   OBJECT_EXPRESSION = 'ObjectExpression',
   PROPERTY = 'Property',

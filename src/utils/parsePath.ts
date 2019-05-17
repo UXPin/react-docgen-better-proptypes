@@ -20,6 +20,7 @@ export interface Node extends ASTNode {
   id?:Node;
   imported?:Node;
   init?:any;
+  local?:Node;
   name:string;
   object:Node;
   operator?:NodeOperator;

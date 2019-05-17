@@ -7,3 +7,5 @@ export const themesPropTypes = {
 };
 
 export const themesDefaultProps = {};
+
+export default themes;

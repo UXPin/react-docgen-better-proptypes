@@ -9,14 +9,18 @@ export type Handler = (filePath:string) => (...args:any[]) => void;
 export function createHandler(propName:AllowedHandlerProps):Handler {
   return (filePath:string) => {
     return (docs:Documentation, path:NodePath) => {
-      const context:HandlerContext = getHandlerContext(
-        docs,
-        path,
-        propName,
-        filePath,
-      );
+      try {
+        const context:HandlerContext = getHandlerContext(
+          docs,
+          path,
+          propName,
+          filePath,
+        );
 
-      parsePath(context.propertyPath, context);
+        parsePath(context.propertyPath, context);
+      } catch (e) {
+        return;
+      }
     };
   };
 }

@@ -19,6 +19,10 @@ export function resolveToValue(path:NodePath<Node>, context:HandlerContext):Node
     }
 
     case NodePathType.CALL_EXPRESSION: {
+      if (isPropTypesExpression(path)) {
+        return resolvePropTypesExpression(path, context);
+      }
+
       break;
     }
 

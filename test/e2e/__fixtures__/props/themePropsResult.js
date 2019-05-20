@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.themePropsResult = {
     theme: {
         description: '',
-        required: true,
+        required: false,
         type: {
             name: 'enum',
             value: [

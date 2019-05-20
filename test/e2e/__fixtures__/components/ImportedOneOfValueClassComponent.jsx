@@ -4,7 +4,7 @@ import { themes } from '../props/themeProps';
 
 class ImportedOneOfValueClassComponent extends React.Component {
   static propTypes = {
-    theme: PropTypes.oneOf(themes).isRequired,
+    theme: PropTypes.oneOf(themes),
   };
 
   render() {

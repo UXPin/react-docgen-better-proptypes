@@ -9,7 +9,7 @@ function ImportedDefaultOneOfValueStatelessComponent() {
 
 ImportedDefaultOneOfValueStatelessComponent.propTypes = {
   size: PropTypes.oneOf(sizesArr).isRequired,
-  theme: PropTypes.oneOf(themes).isRequired,
+  theme: PropTypes.oneOf(themes),
 };
 
 export default ImportedDefaultOneOfValueStatelessComponent;

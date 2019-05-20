@@ -3,7 +3,7 @@ import { Props } from 'react-docgen';
 export const themePropsResult:Props = {
   theme: {
     description: '',
-    required: true,
+    required: false,
     type: {
       name: 'enum',
       value: [

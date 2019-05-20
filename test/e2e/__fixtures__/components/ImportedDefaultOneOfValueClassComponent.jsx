@@ -6,7 +6,7 @@ import themes from '../props/themeProps';
 class ImportedDefaultOneOfValueClassComponent extends React.Component {
   static propTypes = {
     size: PropTypes.oneOf(sizesArr).isRequired,
-    theme: PropTypes.oneOf(themes).isRequired,
+    theme: PropTypes.oneOf(themes),
   };
 
   render() {

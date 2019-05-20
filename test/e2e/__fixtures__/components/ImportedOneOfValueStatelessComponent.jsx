@@ -7,7 +7,7 @@ function ImportedOneOfValueStatelessComponent() {
 }
 
 ImportedOneOfValueStatelessComponent.propTypes = {
-  theme: PropTypes.oneOf(themes).isRequired,
+  theme: PropTypes.oneOf(themes),
 };
 
 export default ImportedOneOfValueStatelessComponent;

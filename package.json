@@ -1,20 +1,20 @@
 {
-  "name": "react-docgen-better-proptypes",
-  "version": "1.0.4",
+  "name": "@uxpin/react-docgen-better-proptypes",
+  "version": "0.1.0",
   "description": "Better support for prop types in react-docgen",
   "scripts": {},
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devfive/react-docgen-better-proptypes.git"
+    "url": "git+https://github.com/UXPin/react-docgen-better-proptypes.git"
   },
   "keywords": [],
   "author": "devfive",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/devfive/react-docgen-better-proptypes/issues"
+    "url": "https://github.com/UXPin/react-docgen-better-proptypes/issues"
   },
-  "homepage": "https://github.com/devfive/react-docgen-better-proptypes#readme",
+  "homepage": "https://github.com/UXPin/react-docgen-better-proptypes#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",

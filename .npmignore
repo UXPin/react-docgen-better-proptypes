@@ -1,2 +1,9 @@
-# Added so npm does not ignore files in .gitignore
-!/dist/
+/.vscode
+/src/**/*.ts
+!/src/types.d.ts
+/test
+Makefile
+tsconfig.json
+tslint.json
+*.log
+yarn.lock

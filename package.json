@@ -1,6 +1,6 @@
 {
   "name": "@uxpin/react-docgen-better-proptypes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Better support for prop types in react-docgen",
   "scripts": {},
   "main": "src/index.js",
